@@ -15,6 +15,13 @@
       "when": 1715622238844,
       "tag": "0001_loud_jack_flag",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1715840470361,
+      "tag": "0002_moaning_clint_barton",
+      "breakpoints": true
     }
   ]
 }
