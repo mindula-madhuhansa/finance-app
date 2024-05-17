@@ -15,13 +15,13 @@ import { columns } from "./columns";
 
 const TransactionsPage = () => {
   const newTransaction = useNewTransaction();
-  const deleteAccount = useBulkDeleteTransactions();
-  const accountsQuery = useGetTransactions();
-  const accounts = accountsQuery.data || [];
+  const deleteTransaction = useBulkDeleteTransactions();
+  const transactionsQuery = useGetTransactions();
+  const transactions = transactionsQuery.data || [];
 
-  const isDisabled = accountsQuery.isLoading || deleteAccount.isPending;
+  const isDisabled = transactionsQuery.isLoading || deleteTransaction.isPending;
 
-  if (accountsQuery.isLoading) {
+  if (transactionsQuery.isLoading) {
     return (
       <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
         <Card className="border-none drop-shadow-sm">
@@ -52,12 +52,12 @@ const TransactionsPage = () => {
         </CardHeader>
         <CardContent>
           <DataTable
-            filterKey="name"
+            filterKey="payee"
             columns={columns}
-            data={accounts}
+            data={transactions}
             onDelete={(row) => {
               const ids = row.map((r) => r.original.id);
-              deleteAccount.mutate({ ids });
+              deleteTransaction.mutate({ ids });
             }}
             disabled={isDisabled}
           />
